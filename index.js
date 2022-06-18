@@ -19,7 +19,7 @@ const player = new Fighter({
     imgSrc: './img/samuraiMack/Idle.png',
     framesMax: 8,
     scale: 2.5,
-    offset: {x: 215, y: 157 },
+    offset: {x: 215, y: 157 }, //The sprites specific offset for when it's time to redraw the frames
     sprites: { 
         idle: { imgSrc: './img/samuraiMack/Idle.png', framesMax: 8 },
         sprint: { imgSrc: './img/samuraiMack/Run.png', framesMax: 8 },
