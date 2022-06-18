@@ -8,4 +8,5 @@ A simple 2D fighting made in JS/HTML and CSS with object orianted programming in
 [Fighter Asset #1 (Samurai Mack)](https://luizmelo.itch.io/martial-hero)
 
 [Fighter Asset #2 (Kenji)](https://luizmelo.itch.io/martial-hero-2)
+
 ---
