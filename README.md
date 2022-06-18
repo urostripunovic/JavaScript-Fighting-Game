@@ -1,4 +1,4 @@
-# "2d Fighting Game"
+# "2D Fighting Game"
 
 A simple 2D fighting made in JS/HTML and CSS with object oriented programming in mind. Spirte animations, local CO-OP, simple fighting game logic and an AI too boot were done in this project. 
 ---
