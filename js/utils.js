@@ -1,4 +1,4 @@
-function rectangularCollision( { playerRectangle, enemyRectangle}) {
+function rectangularCollision( { playerRectangle, enemyRectangle }) {
     return (
         playerRectangle.attackBox.position.x + playerRectangle.attackBox.width >= enemyRectangle.position.x &&
         playerRectangle.attackBox.position.x <= enemyRectangle.position.x + enemyRectangle.width &&

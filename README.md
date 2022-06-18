@@ -9,4 +9,8 @@ A simple 2D fighting made in JS/HTML and CSS with object oriented programming in
 
 [Fighter Asset #2 (Kenji)](https://luizmelo.itch.io/martial-hero-2)
 
+[Tekken 7 OST: Infinite Azure](https://www.youtube.com/watch?v=iV36oKczdzE)
+
+Couldn't find the sources for the other sound effects and music.
+
 ---
