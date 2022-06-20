@@ -32,3 +32,7 @@ function decreaseTimer() {
         determineWinner({ player, enemy, timerId });
     }
 }
+
+function ai({ player, enemy }) {
+
+}
