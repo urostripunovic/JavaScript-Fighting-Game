@@ -54,6 +54,7 @@ class Fighter extends Sprite {
         framesMax = 1, 
         sprites, 
         attackBox = { offset: {}, width: undefined, height: undefined },
+        wins,
     }) {
         super({
             position,
@@ -80,7 +81,7 @@ class Fighter extends Sprite {
         this.framsHold = 15;
         this.sprites = sprites;
         this.isDead = false;
-        this.wins = 1;
+        this.wins = wins;
 
         for (const sprite in sprites) {
             sprites[sprite].img = new Image();

@@ -33,8 +33,10 @@ const player = new Fighter({
         offset: { x: 100, y: 50},
         width: 158,
         height: 50,
-    }
+    },
+    wins: 3,
 });
+
 
 const enemy = new Fighter({
     position: { x: 937, y: 100 },
@@ -58,7 +60,8 @@ const enemy = new Fighter({
         offset: { x: -173, y: 50},
         width: 170,
         height: 50,
-    }
+    },
+    wins: 0,
 });
 
 const keys = {
@@ -164,9 +167,11 @@ function animate() {
 
     //end game based on health
     if (enemy.health <= 0 || player.health <= 0) {
-        determineWinner({ player, enemy, timerId });
+        determineWinner({ player, enemy, timerId }); 
     }
 }
+
+wins({ player, enemy });
 
 animate();
 
@@ -194,6 +199,7 @@ window.addEventListener('keydown', (e) => {
     
     if (!enemy.isDead) {
         //AI ska spelas här.
+        //ai({ player, enemy });
         switch (e.key) {
             case 'ArrowRight':
                 keys.ArrowRight.pressed = true;
