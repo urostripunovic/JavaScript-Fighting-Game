@@ -51,7 +51,7 @@ const enemy = new Fighter({
         jump: { imgSrc: './img/kenji/Jump.png', framesMax: 2 },
         fall: { imgSrc: './img/kenji/Fall.png', framesMax: 2 },
         attack1: { imgSrc: './img/kenji/Attack1.png', framesMax: 4 },
-        takeHit: { imgSrc: './img/kenji/Take Hit.png', framesMax: 3 },
+        takeHit: { imgSrc: './img/kenji/Take hit - white silhouette.png', framesMax: 3 },
         death: { imgSrc: './img/kenji/Death.png', framesMax: 7 },
     },
     attackBox: {
@@ -81,22 +81,24 @@ function animate() {
     player.update();
     enemy.update();
 
-    //TODO flip character positions when passing each other
-    if (player.position.x + player.width > enemy.position.x - enemy.width) {
-        //Rewrite the sprites to the flipped versions
-    } else if (player.position.x + player.width > enemy.position.x - enemy.width) {
-        //Write back the sprites to the original version
+    //TODO flip character positions when passing each other, wont work we don't have the sprites animations
+    let flipped = false;
+    if (player.position.x + player.width > enemy.position.x + enemy.width) {
+       flipped = true;
+    } else {
+        flipped = false;
     }
 
     //Player movement
     player.velocity.x = 0;
+    let boundryPlayer = flipped ? 935 : 935 - enemy.width;
     if (keys.a.pressed && player.lastKey === 'a' && player.position.x >= 40) {
         player.velocity.x = -5;
         player.switchSprites('sprint');
-    } else if (keys.d.pressed && player.lastKey === 'd' && player.position.x <= 940) {
+    } else if (keys.d.pressed && player.lastKey === 'd' && player.position.x < boundryPlayer) { //If enemy is cornered he can still be hit
         player.velocity.x = 5;
         player.switchSprites('sprint');
-    } else if (keys.a.pressed && player.lastKey === 'a' && player.position.x < 40 || keys.d.pressed && player.lastKey === 'd' && player.position.x > 940) {
+    } else if (keys.a.pressed && player.lastKey === 'a' && player.position.x < 40 || keys.d.pressed && player.lastKey === 'd' && player.position.x > 934 - enemy.width) {
         player.switchSprites('sprint');
     } else {
         player.switchSprites('idle');
@@ -108,29 +110,6 @@ function animate() {
         player.switchSprites('fall');
     }
 
-    //Enemy movement
-    enemy.velocity.x = 0;
-    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x >= 20) {
-        enemy.velocity.x = -5;
-        enemy.switchSprites('sprint');
-    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x < 937) {
-        enemy.velocity.x = 5;
-        enemy.switchSprites('sprint');
-    } else if (
-            keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x > 936 || 
-            keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x < 40
-    ) {
-        enemy.switchSprites('sprint');
-    } else {
-        enemy.switchSprites('idle');
-    }
-
-    if (enemy.velocity.y < 0) {
-        enemy.switchSprites('jump');
-    } else if (enemy.velocity.y > 0) {
-        enemy.switchSprites('fall');
-    }
-
     //detect for collision & we get hit
     if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && player.isAttacking && player.currentFrame === 4) {
         enemy.takeHit();
@@ -140,10 +119,33 @@ function animate() {
             width: enemy.health + '%'
         });
     }
-
+    
     //player misses attack
     if (player.isAttacking && player.currentFrame === 4) {
         player.isAttacking = false;
+    }
+
+    //Enemy movement
+    enemy.velocity.x = 0;
+    let boundryEnemy = flipped ? 15 : 40 + player.width;
+    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x > boundryEnemy) {
+        enemy.velocity.x = -5;
+        enemy.switchSprites('sprint');
+    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x < 937) {
+        enemy.velocity.x = 5;
+        enemy.switchSprites('sprint');
+    } else if (
+        keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x > 936 || 
+        keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x < 40 + player.width) {
+        enemy.switchSprites('sprint');
+    } else {
+        enemy.switchSprites('idle');
+    }
+
+    if (enemy.velocity.y < 0) {
+        enemy.switchSprites('jump');
+    } else if (enemy.velocity.y > 0) {
+        enemy.switchSprites('fall');
     }
 
     if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) {
@@ -191,6 +193,7 @@ window.addEventListener('keydown', (e) => {
     }
     
     if (!enemy.isDead) {
+        //AI ska spelas här.
         switch (e.key) {
             case 'ArrowRight':
                 keys.ArrowRight.pressed = true;

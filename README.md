@@ -11,6 +11,8 @@ A simple 2D fighting made in JS/HTML and CSS with object oriented programming in
 
 [Tekken 7 OST: Infinite Azure](https://www.youtube.com/watch?v=iV36oKczdzE)
 
+[Animations tutorial](https://youtu.be/MHGgVlrlkYc)
+
 Couldn't find the sources for the other sound effects and music.
 
 ---

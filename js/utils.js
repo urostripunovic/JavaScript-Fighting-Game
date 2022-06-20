@@ -11,11 +11,11 @@ function determineWinner({ player, enemy, timerId }) {
     clearTimeout(timerId);
     document.querySelector('#displayText').style.display = 'flex';
     if (player.health === enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Tie</br></br>Press Enter to restart';
+        document.querySelector('#displayText').innerHTML = 'Tie</br></br>Press ENTER to restart';
     } else if (player.health > enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Player 1 Wins</br></br>Press Enter to restart';  
+        document.querySelector('#displayText').innerHTML = 'Player 1 Wins</br></br>Press ENTER to restart'; 
     } else {
-        document.querySelector('#displayText').innerHTML = 'Player 2 Wins</br></br>Press Enter to restart';  
+        document.querySelector('#displayText').innerHTML = 'Player 2 Wins</br></br>Press ENTER to restart';  
     }
 }
 
@@ -29,6 +29,6 @@ function decreaseTimer() {
     }
 
     if (timer === 0) {
-        determineWinner({ player, enemy, timerId })
+        determineWinner({ player, enemy, timerId });
     }
 }

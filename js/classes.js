@@ -9,7 +9,6 @@ class Sprite {
         this.framsElapsed = 0;
         this.framsHold = 15;
         this.offset = offset;
-        //this.flipped = false;
     }
 
     draw() {
@@ -25,7 +24,7 @@ class Sprite {
             this.position.y - this.offset.y, 
             (this.img.width / this.framesMax) * this.scale, 
             this.img.height * this.scale,
-            );
+        );
     }
 
     animateFrames() {
@@ -81,6 +80,7 @@ class Fighter extends Sprite {
         this.framsHold = 15;
         this.sprites = sprites;
         this.isDead = false;
+        this.wins = 1;
 
         for (const sprite in sprites) {
             sprites[sprite].img = new Image();
@@ -97,7 +97,7 @@ class Fighter extends Sprite {
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
         //Attack box
-        //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
+        c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
