@@ -31,19 +31,19 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
   - [x] Death
 - [x] Attacks functionality with animations
 - [x] Interface Design and Animation
-- [] Deploy GitHub Page
+- [x] Deploy GitHub Page
 ---
 ### Known Bugs
 
 - ~~Can't run outside of the map or at the edge of the map~~
 - ~~Double jumps or multiple jumps outside of the map~~
--  Swiping multiple times by holding in `space`/`ArrowDown`
+-  Swiping multiple times by holding in `space`/`ArrowDown` (It's a feature) ❌
 ---
 ##### TODO:
-- Reverse the sprites when they run past each other
+- Reverse the sprites when they run past each other (Can't since the sprites don't come with that) ❌
 - Simple bot AI.
 - Start buttons to start the battle against bot or local CO-OP
-- Win streaks (Wasn't able to make it work as I wanted. trying to count upp in a infinity loop isn't that great)
+- Win streaks (Wasn't able to make it work as I wanted. trying to count upp in a infinity loop isn't that great) ❌
 ---
 ### Assets and Resources
 [Oak Woods Assets](https://brullov.itch.io/oak-woods)
