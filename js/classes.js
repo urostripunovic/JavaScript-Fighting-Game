@@ -82,6 +82,7 @@ class Fighter extends Sprite {
         this.sprites = sprites;
         this.isDead = false;
         this.wins = wins;
+        this.won = false;
 
         for (const sprite in sprites) {
             sprites[sprite].img = new Image();

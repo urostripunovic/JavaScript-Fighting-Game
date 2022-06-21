@@ -1,3 +1,6 @@
+//sessionStorage.setItem('player', 3);
+//sessionStorage.setItem('enemy', 0); 
+
 function rectangularCollision( { playerRectangle, enemyRectangle }) {
     return (
         playerRectangle.attackBox.position.x + playerRectangle.attackBox.width >= enemyRectangle.position.x &&
@@ -12,40 +15,37 @@ function determineWinner({ player, enemy, timerId }) {
     document.querySelector('#displayText').style.display = 'flex';
     if (player.health === enemy.health) {
         document.querySelector('#displayText').innerHTML = 'Tie</br></br>Press ENTER to restart';
+        //sessionStorage.player = 0;
+        //sessionStorage.enemy = 0;
     } else if (player.health > enemy.health) {
         document.querySelector('#displayText').innerHTML = 'Player 1 Wins</br></br>Press ENTER to restart'; 
+        //sessionStorage.player = Number(sessionStorage.player) + 1;
+        //sessionStorage.enemy = 0;
     } else {
         document.querySelector('#displayText').innerHTML = 'Player 2 Wins</br></br>Press ENTER to restart';  
+        //sessionStorage.enemy = Number(sessionStorage.enemy) + 1;
+        //sessionStorage.player = 0;
     }
 }
 
-
-//Verkar inte funka, vet vart felet ligger men vet inte hur jag skall stoppa räkningen
-function wins({ player, enemy }) {
-    sessionStorage.setItem('player', 0);
-    sessionStorage.setItem('enemy', 0);    
-
-    //Init of number of wins for testing
-    //if (+sessionStorage.player > 0) document.querySelector('#playerWins').style.display = 'flex';
-    //if (+sessionStorage.enemy > 0) document.querySelector('#enemyWins').style.display = 'flex';
-
-    console.log(player.health)
-
-    if (enemy.health <= 0) {
-        sessionStorage.player = Number(sessionStorage.player) + 1;
-        sessionStorage.enemy = 0;
-        document.querySelector('#enemyWins').style.display = 'none';
+//Verkar inte funka, vet vart felet ligger men vet inte hur jag skall stoppa räkningen eller få ut värdet en gång från vår infinite animation loop
+/* function winStreak() {
+    //Visa vinns om det finns några
+    if (+sessionStorage.player > 0) {
         document.querySelector('#playerWins').style.display = 'flex';
-    } else if (player.health <= 0) {
-        sessionStorage.enemy = Number(sessionStorage.enemy) + 1;
-        sessionStorage.player = 0;
+    } else {
         document.querySelector('#playerWins').style.display = 'none';
+    }
+
+    if (+sessionStorage.enemy > 0) {
         document.querySelector('#enemyWins').style.display = 'flex';
+    } else {
+        document.querySelector('#enemyWins').style.display = 'none';
     }
 
     document.querySelector('#playerWins').innerHTML = 'wins:'+sessionStorage.player;
-    document.querySelector('#enemyWins').innerHTML = 'wins:'+sessionStorage.enemy;  
-}
+    document.querySelector('#enemyWins').innerHTML = 'wins:'+sessionStorage.enemy;
+} */
 
 let timer = 60;
 let timerId;

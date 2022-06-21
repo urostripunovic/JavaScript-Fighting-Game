@@ -1,6 +1,6 @@
 # "2D Fighting Game"
 
-A simple 2D fighting made in JS/HTML and CSS with object oriented programming in mind. Spirte animations, local CO-OP, simple fighting game logic and an AI too boot were done in this project. 
+A simple 2D fighting made in JS/HTML and some CSS with object oriented programming in mind. Spirte animations, local CO-OP, simple fighting game logic and an AI (not the neural network kind) to boot were done in this project. 
 ---
 ### Assets
 [Oak Woods Assets](https://brullov.itch.io/oak-woods)
