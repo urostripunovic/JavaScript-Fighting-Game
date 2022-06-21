@@ -39,7 +39,6 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 - ~~Can't run outside of the map or at the edge of the map~~
 - ~~Double jumps or multiple jumps outside of the map~~
 - Swiping multiple times by holding in `space`/`ArrowDown` (It's a feature) ❌
-- When both players are attacking at the same time the death animation doesn't trigger
 - Animation bugs where longer animations can't be cancled before the determine winner is done i.e player with longer animations don't "*die*"
 ---
 ##### TODO:
