@@ -35,8 +35,7 @@ const player = new Fighter({
     },
 });
 
-
-/* const enemy = new Fighter({
+const enemy = new Fighter({
     position: { x: 937, y: 100 },
     velocity: { x: 0, y: 0 },
     imgSrc: './img/fantasyMan/Idle.png',
@@ -57,9 +56,9 @@ const player = new Fighter({
         width: 150,
         height: 50,
     },
-}); */
+}); 
 
-const enemy = new Fighter({
+/*const enemy = new Fighter({
     position: { x: 937, y: 100 },
     velocity: { x: 0, y: 0 },
     color: 'blue',
@@ -85,7 +84,7 @@ const enemy = new Fighter({
       width: 170,
       height: 50
     }
-  })
+})*/
 
 const keys = {
     a: { pressed: false },
