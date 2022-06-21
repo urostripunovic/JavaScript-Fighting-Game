@@ -45,7 +45,7 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 - Simple bot AI.
 - Start buttons to start the battle against bot or local CO-OP
 - Reverse the sprites when they run past each other (Can't since the sprites don't come with that) ❌
-- Win streaks (Wasn't able to make it work as I wanted. trying to count upp in a infinity loop isn't that great) ❌
+- Win streaks (Wasn't able to make it work as I wanted. trying to count up in a infinity loop isn't a great idea) ❌
 ---
 ### Assets and Resources
 [Oak Woods Assets](https://brullov.itch.io/oak-woods)
