@@ -100,8 +100,13 @@ class Fighter extends Sprite {
 
         //Attack box
         //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
-
-        //Fill rect används också för att göra lådorna, this.width och this.height refereas till det. 
+        //Hitbox debuggning
+        //c.fillRect(
+        //   this.attackBox.position.x,
+        //   this.attackBox.position.y,
+        //   this.attackBox.width,
+        //   this.attackBox.height
+        // );
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;

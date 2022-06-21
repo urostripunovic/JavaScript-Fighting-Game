@@ -15,7 +15,6 @@ const shop = new Sprite({ position: { x: 625, y: 128 }, imgSrc: './img/shop.png'
 const player = new Fighter({
     position: { x: 30, y: 0 },
     velocity: { x: 0, y: 10 },
-    offset: { x: 0, y: 0 },
     imgSrc: './img/samuraiMack/Idle.png',
     framesMax: 8,
     scale: 2.5,
@@ -41,20 +40,18 @@ const player = new Fighter({
 const enemy = new Fighter({
     position: { x: 937, y: 100 },
     velocity: { x: 0, y: 0 },
-    color: 'blue',
-    offset: { x: 50, y: 0 },
-    imgSrc: './img/kenji/Idle.png',
-    framesMax: 4,
-    scale: 2.5,
-    offset: {x: 215, y: 167 },
+    imgSrc: './img/fantasyMan/Idle.png',
+    framesMax: 10,
+    scale: 3.0,
+    offset: {x: 215, y: 153 },
     sprites: { 
-        idle: { imgSrc: './img/kenji/Idle.png', framesMax: 4 },
-        sprint: { imgSrc: './img/kenji/Run.png', framesMax: 8 },
-        jump: { imgSrc: './img/kenji/Jump.png', framesMax: 2 },
-        fall: { imgSrc: './img/kenji/Fall.png', framesMax: 2 },
-        attack1: { imgSrc: './img/kenji/Attack1.png', framesMax: 4 },
-        takeHit: { imgSrc: './img/kenji/Take hit - white silhouette.png', framesMax: 3 },
-        death: { imgSrc: './img/kenji/Death.png', framesMax: 7 },
+        idle: { imgSrc: './img/fantasyMan/Idle.png', framesMax: 10 },
+        sprint: { imgSrc: './img/fantasyMan/Run.png', framesMax: 8 },
+        jump: { imgSrc: './img/fantasyMan/Jump.png', framesMax: 3 },
+        fall: { imgSrc: './img/fantasyMan/Fall.png', framesMax: 3 },
+        attack1: { imgSrc: './img/fantasyMan/Attack3.png', framesMax: 8 },
+        takeHit: { imgSrc: './img/fantasyMan/Take hit.png', framesMax: 3 },
+        death: { imgSrc: './img/fantasyMan/Death.png', framesMax: 7 },
     },
     attackBox: {
         offset: { x: -173, y: 50},
@@ -153,7 +150,7 @@ function animate() {
         enemy.switchSprites('fall');
     }
 
-    if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) {
+    if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 5) {
         enemy.isAttacking = false;
         audio.hit1.play();
         player.takeHit();
@@ -165,7 +162,7 @@ function animate() {
     }
 
     //player misses attack
-    if (enemy.isAttacking && enemy.currentFrame === 2) {
+    if (enemy.isAttacking && enemy.currentFrame === 5) {
         enemy.isAttacking = false;
     }
 
