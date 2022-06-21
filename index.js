@@ -10,7 +10,7 @@ const gravity = 0.7;
 
 const background = new Sprite({ position: { x: 0, y: 0 }, imgSrc: './img/background.png' });
 
-const shop = new Sprite({ position: { x: 625, y: 128 }, imgSrc: './img/shop.png', scale: 2.75, framesMax: 6 });
+const shop = new Sprite({ position: { x: 685, y: 224 }, imgSrc: './img/shop.png', scale: 2.0, framesMax: 6 });
 
 const player = new Fighter({
     position: { x: 30, y: 0 },
@@ -35,7 +35,7 @@ const player = new Fighter({
     },
 });
 
-const enemy = new Fighter({
+/*const enemy = new Fighter({
     position: { x: 937, y: 100 },
     velocity: { x: 0, y: 0 },
     imgSrc: './img/fantasyMan/Idle.png',
@@ -56,9 +56,9 @@ const enemy = new Fighter({
         width: 150,
         height: 50,
     },
-}); 
+});*/ 
 
-/*const enemy = new Fighter({
+const enemy = new Fighter({
     position: { x: 937, y: 100 },
     velocity: { x: 0, y: 0 },
     color: 'blue',
@@ -84,7 +84,7 @@ const enemy = new Fighter({
       width: 170,
       height: 50
     }
-})*/
+});
 
 const keys = {
     a: { pressed: false },
@@ -101,7 +101,7 @@ function animate() {
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
     shop.update();
-    c.fillStyle = 'rgba(255,255,255, 0.12)'; //0.12 e opacity så det gör gubbarna lite kontrast
+    c.fillStyle = 'rgba(255,255,255, 0.05)'; //0.12 e opacity så det gör gubbarna lite kontrast
     c.fillRect(0,0, canvas.width, canvas.height);
     player.update();
     enemy.update();
