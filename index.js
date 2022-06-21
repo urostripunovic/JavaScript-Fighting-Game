@@ -15,18 +15,18 @@ const shop = new Sprite({ position: { x: 625, y: 128 }, imgSrc: './img/shop.png'
 const player = new Fighter({
     position: { x: 30, y: 0 },
     velocity: { x: 0, y: 10 },
-    imgSrc: './img/samuraiMack/Idle.png',
+    imgSrc: './img/samurai/Idle.png',
     framesMax: 8,
     scale: 2.5,
     offset: {x: 215, y: 157 }, //The sprites specific offset for when it's time to redraw the frames
     sprites: { 
-        idle: { imgSrc: './img/samuraiMack/Idle.png', framesMax: 8 },
-        sprint: { imgSrc: './img/samuraiMack/Run.png', framesMax: 8 },
-        jump: { imgSrc: './img/samuraiMack/Jump.png', framesMax: 2 },
-        fall: { imgSrc: './img/samuraiMack/Fall.png', framesMax: 2 },
-        attack1: { imgSrc: './img/samuraiMack/Attack1.png', framesMax: 6 },
-        takeHit: { imgSrc: './img/samuraiMack/Take Hit - white silhouette.png', framesMax: 4 },
-        death: { imgSrc: './img/samuraiMack/Death.png', framesMax: 6 },
+        idle: { imgSrc: './img/samurai/Idle.png', framesMax: 8 },
+        sprint: { imgSrc: './img/samurai/Run.png', framesMax: 8 },
+        jump: { imgSrc: './img/samurai/Jump.png', framesMax: 2 },
+        fall: { imgSrc: './img/samurai/Fall.png', framesMax: 2 },
+        attack1: { imgSrc: './img/samurai/Attack1.png', framesMax: 6 },
+        takeHit: { imgSrc: './img/samurai/Take Hit - white silhouette.png', framesMax: 4 },
+        death: { imgSrc: './img/samurai/Death.png', framesMax: 6 },
     },
     attackBox: {
         offset: { x: 100, y: 50},
@@ -54,8 +54,8 @@ const enemy = new Fighter({
         death: { imgSrc: './img/fantasyMan/Death.png', framesMax: 7 },
     },
     attackBox: {
-        offset: { x: -173, y: 50},
-        width: 170,
+        offset: { x: -153, y: 50},
+        width: 150,
         height: 50,
     },
     wins: 0,
@@ -81,7 +81,7 @@ function animate() {
     player.update();
     enemy.update();
 
-    //TODO flip character positions when passing each other, wont work we don't have the sprites animations
+    //when one is cornerned they can get hit
     let flipped = false;
     if (player.position.x + player.width > enemy.position.x + enemy.width) {
        flipped = true;
@@ -171,7 +171,6 @@ function animate() {
         determineWinner({ player, enemy, timerId });
         audio.Battle.stop();
     }
-    //winStreak();
 }
 
 animate();

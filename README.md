@@ -9,6 +9,8 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 |   `a`   |  LEFT  | ⬅️  |
 |   `d`   | RIGHT  | ➡️  |
 | `space` | ATTACK | ⬇️  |
+
+![]() Lägg till en gif på spelet
 ---
 ### Basic Fighting Game Mechanics / Check List:
 
@@ -63,6 +65,8 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 [2bit font style](https://fonts.google.com/share?selection.family=Press%20Start%202P)
 
 [Animate Library `gsap`](https://cdnjs.com/libraries/gsap)
+
+[Audio Library `Howl`](https://howlerjs.com/)
 
 [Chris Courses](https://www.youtube.com/c/ChrisCourses)
 
