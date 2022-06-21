@@ -29,6 +29,7 @@ function determineWinner({ player, enemy, timerId }) {
 }
 
 //Verkar inte funka, vet vart felet ligger men vet inte hur jag skall stoppa räkningen eller få ut värdet en gång från vår infinite animation loop
+//utan att förstöra animations frame...
 /* function winStreak() {
     //Visa vinns om det finns några
     if (+sessionStorage.player > 0) {
@@ -61,6 +62,8 @@ function decreaseTimer() {
     }
 }
 
-function ai({ player, enemy }) {
-    console.log("hej")
+function ai({ player, enemy, keys }) {
+    if (player.position.x + player.width < enemy.position.x + enemy.width) {
+        return  'ArrowLeft';
+    }
 }

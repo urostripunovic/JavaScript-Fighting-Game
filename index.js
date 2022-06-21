@@ -198,8 +198,6 @@ window.addEventListener('keydown', (e) => {
     }
     
     if (!enemy.isDead) {
-        //AI ska spelas här.
-        //ai({ player, enemy });
         switch (e.key) {
             case 'ArrowRight':
                 keys.ArrowRight.pressed = true;
