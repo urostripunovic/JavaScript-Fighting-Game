@@ -99,7 +99,9 @@ class Fighter extends Sprite {
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
         //Attack box
-        c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
+        //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
+
+        //Fill rect används också för att göra lådorna, this.width och this.height refereas till det. 
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
@@ -116,13 +118,13 @@ class Fighter extends Sprite {
     attack() {
         this.switchSprites('attack1');
         this.isAttacking = true;
-               
     }
 
     takeHit() {
         this.health -= 20;
         if (this.health <= 0) {
             this.switchSprites('death');
+            audio.victory.play();
         } else {
             this.switchSprites('takeHit');
         }

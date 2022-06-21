@@ -25,7 +25,7 @@ function determineWinner({ player, enemy, timerId }) {
         document.querySelector('#displayText').innerHTML = 'Player 2 Wins</br></br>Press ENTER to restart';  
         //sessionStorage.enemy = Number(sessionStorage.enemy) + 1;
         //sessionStorage.player = 0;
-    }
+    } 
 }
 
 //Verkar inte funka, vet vart felet ligger men vet inte hur jag skall stoppa räkningen eller få ut värdet en gång från vår infinite animation loop
@@ -64,6 +64,5 @@ function decreaseTimer() {
 
 function ai({ player, enemy, keys }) {
     if (player.position.x + player.width < enemy.position.x + enemy.width) {
-        return  'ArrowLeft';
     }
 }

@@ -115,7 +115,9 @@ function animate() {
 
     //detect for collision & we get hit
     if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && player.isAttacking && player.currentFrame === 4) {
+        audio.hit3.play();
         enemy.takeHit();
+        audio.hit3.stop();
         player.isAttacking = false;
         //document.querySelector('#enemyHealth').style.width = enemy.health + '%';
         gsap.to('#enemyHealth', {
@@ -153,7 +155,9 @@ function animate() {
 
     if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) {
         enemy.isAttacking = false;
+        audio.hit1.play();
         player.takeHit();
+        audio.hit1.stop();
         //document.querySelector('#playerHealth').style.width = player.health + '%';
         gsap.to('#playerHealth', {
             width: player.health + '%'
@@ -167,9 +171,9 @@ function animate() {
 
     //end game based on health
     if (enemy.health <= 0 || player.health <= 0) {
-        determineWinner({ player, enemy, timerId }); 
+        determineWinner({ player, enemy, timerId });
+        audio.Battle.stop();
     }
-
     //winStreak();
 }
 
@@ -236,3 +240,11 @@ window.addEventListener('keyup', (e) => {
         break;
     }
 });
+
+let clicked = false;
+window.addEventListener('keydown', () => {
+    if(!clicked) {
+        audio.Battle.play();
+        clicked = true;
+    }
+})
