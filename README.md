@@ -10,7 +10,6 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 |   `d`   | RIGHT  | ➡️  |
 | `space` | ATTACK | ⬇️  |
 
-![]() Lägg till en gif på spelet
 ---
 ### Basic Fighting Game Mechanics / Check List:
 
@@ -39,12 +38,14 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 
 - ~~Can't run outside of the map or at the edge of the map~~
 - ~~Double jumps or multiple jumps outside of the map~~
--  Swiping multiple times by holding in `space`/`ArrowDown` (It's a feature) ❌
+- Swiping multiple times by holding in `space`/`ArrowDown` (It's a feature) ❌
+- When both players are attacking at the same time the death animation doesn't trigger
+- Animation bugs where longer animations can't be cancled before the determine winner is done i.e player with longer animations don't "*die*"
 ---
 ##### TODO:
-- Reverse the sprites when they run past each other (Can't since the sprites don't come with that) ❌
 - Simple bot AI.
 - Start buttons to start the battle against bot or local CO-OP
+- Reverse the sprites when they run past each other (Can't since the sprites don't come with that) ❌
 - Win streaks (Wasn't able to make it work as I wanted. trying to count upp in a infinity loop isn't that great) ❌
 ---
 ### Assets and Resources

@@ -54,7 +54,6 @@ class Fighter extends Sprite {
         framesMax = 1, 
         sprites, 
         attackBox = { offset: {}, width: undefined, height: undefined },
-        wins,
     }) {
         super({
             position,
@@ -81,8 +80,6 @@ class Fighter extends Sprite {
         this.framsHold = 15;
         this.sprites = sprites;
         this.isDead = false;
-        this.wins = wins;
-        this.won = false;
 
         for (const sprite in sprites) {
             sprites[sprite].img = new Image();
@@ -94,12 +91,11 @@ class Fighter extends Sprite {
         this.draw();
         if (!this.isDead) this.animateFrames();
 
-
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
         //Attack box
-        c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
+        //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
         //Hitbox debuggning
         //c.fillRect(
         //   this.attackBox.position.x,
@@ -128,8 +124,9 @@ class Fighter extends Sprite {
     takeHit() {
         this.health -= 20;
         if (this.health <= 0) {
-            this.switchSprites('death');
             audio.victory.play();
+            this.switchSprites('death');
+            audio.victory.stop();
         } else {
             this.switchSprites('takeHit');
         }
@@ -137,13 +134,12 @@ class Fighter extends Sprite {
 
     switchSprites(sprite) {
         //Override the other animations with attacking, dying and getting hit
-        if (this.img === this.sprites.attack1.img && this.currentFrame < this.sprites.attack1.framesMax - 1) return;
-        if (this.img === this.sprites.takeHit.img && this.currentFrame < this.sprites.takeHit.framesMax - 1) return;
-
         if (this.img === this.sprites.death.img) {
             if (this.currentFrame === this.sprites.death.framesMax - 1) this.isDead = true;
             return;
-          }
+        }
+        if (this.img === this.sprites.attack1.img && this.currentFrame < this.sprites.attack1.framesMax - 1) return;
+        if (this.img === this.sprites.takeHit.img && this.currentFrame < this.sprites.takeHit.framesMax - 1) return;
 
         switch (sprite) {
             case 'idle':

@@ -33,11 +33,10 @@ const player = new Fighter({
         width: 158,
         height: 50,
     },
-    wins: 3,
 });
 
 
-const enemy = new Fighter({
+/* const enemy = new Fighter({
     position: { x: 937, y: 100 },
     velocity: { x: 0, y: 0 },
     imgSrc: './img/fantasyMan/Idle.png',
@@ -50,7 +49,7 @@ const enemy = new Fighter({
         jump: { imgSrc: './img/fantasyMan/Jump.png', framesMax: 3 },
         fall: { imgSrc: './img/fantasyMan/Fall.png', framesMax: 3 },
         attack1: { imgSrc: './img/fantasyMan/Attack3.png', framesMax: 8 },
-        takeHit: { imgSrc: './img/fantasyMan/Take hit.png', framesMax: 3 },
+        takeHit: { imgSrc: './img/fantasyMan/Take Hit - white silhouette.png', framesMax: 3 },
         death: { imgSrc: './img/fantasyMan/Death.png', framesMax: 7 },
     },
     attackBox: {
@@ -58,8 +57,35 @@ const enemy = new Fighter({
         width: 150,
         height: 50,
     },
-    wins: 0,
-});
+}); */
+
+const enemy = new Fighter({
+    position: { x: 937, y: 100 },
+    velocity: { x: 0, y: 0 },
+    color: 'blue',
+    offset: {
+      x: -50,
+      y: 0
+    },
+    imgSrc: './img/ninja/Idle.png',
+    framesMax: 4,
+    scale: 2.5,
+    offset: {x: 215, y: 167},
+    sprites: { 
+        idle: { imgSrc: './img/ninja/Idle.png', framesMax: 4 },
+        sprint: { imgSrc: './img/ninja/Run.png', framesMax: 8 },
+        jump: { imgSrc: './img/ninja/Jump.png', framesMax: 2 },
+        fall: { imgSrc: './img/ninja/Fall.png', framesMax: 2 },
+        attack1: { imgSrc: './img/ninja/Attack1.png', framesMax: 4 },
+        takeHit: { imgSrc: './img/ninja/Take Hit - white silhouette.png', framesMax: 3 },
+        death: { imgSrc: './img/ninja/Death.png', framesMax: 7 },
+    },
+    attackBox: {
+      offset: {x: -167, y: 50},
+      width: 170,
+      height: 50
+    }
+  })
 
 const keys = {
     a: { pressed: false },
@@ -150,7 +176,7 @@ function animate() {
         enemy.switchSprites('fall');
     }
 
-    if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 5) {
+    if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) { //5
         enemy.isAttacking = false;
         audio.hit1.play();
         player.takeHit();
@@ -162,7 +188,7 @@ function animate() {
     }
 
     //player misses attack
-    if (enemy.isAttacking && enemy.currentFrame === 5) {
+    if (enemy.isAttacking && enemy.currentFrame === 2) { //5
         enemy.isAttacking = false;
     }
 
@@ -243,4 +269,4 @@ window.addEventListener('keydown', () => {
         audio.Battle.play();
         clicked = true;
     }
-})
+});
