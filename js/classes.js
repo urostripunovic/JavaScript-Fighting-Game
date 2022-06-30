@@ -9,6 +9,8 @@ class Sprite {
         this.framsElapsed = 0;
         this.framsHold = 15;
         this.offset = offset;
+        this.called = 0;
+        this.jumped;
     }
 
     draw() {
