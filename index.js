@@ -206,6 +206,8 @@ animate();
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && (player.isDead || enemy.isDead) || timer === 0) location.reload();
 
+    if (e.repeat) return;
+
     if (!player.isDead) {
         switch (e.key) {
             case 'd':
@@ -221,7 +223,6 @@ window.addEventListener('keydown', (e) => {
             break;
             case ' ': 
                 player.attack();
-                console.log('hur många gånger');
             break;
         }
     }
@@ -267,7 +268,7 @@ window.addEventListener('keyup', (e) => {
 });
 
 let clicked = false;
-window.addEventListener('keydown', () => {
+window.addEventListener('click', () => {
     if(!clicked) {
         audio.Battle.play();
         clicked = true;
