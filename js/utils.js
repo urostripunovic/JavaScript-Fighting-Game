@@ -52,7 +52,7 @@ let timer = 60;
 let timerId;
 function decreaseTimer() {
     if (timer > 0) {
-        if (timer === 2) actionArr = [];
+        if (timer === 2) actionArr = []; //So that the AI doesn't buffer any actions before the game is done
         timerId = setTimeout(decreaseTimer, 1000);
         timer--;
         document.querySelector('#timer').innerHTML = timer;
@@ -69,7 +69,7 @@ function ai({ player, enemy, boundryEnemy, counter }) {
     const extraMeasure = 30; //So that the AI doesn't walk inside player so that it can't attack
 
     /**
-     * Work around for the infinty loop but I still have the issue of having a swipe done multiple times making this GENIUS solution not really that optimal
+     * Work around for the infinty loop
      */
     if (counter === 200) {
         randomAction = actionArr[Math.floor(Math.random() * actionArr.length)];
@@ -82,7 +82,7 @@ function ai({ player, enemy, boundryEnemy, counter }) {
         switch (randomAction) {
             case 'jump':
                 if (enemy.velocity.y === 0 && !enemy.jumped) {
-                    enemy.velocity.y = -20; //Same bug as before when playing 1vs1
+                    enemy.velocity.y = -20; //Same bug as before, when playing 1vs1
                     enemy.called = 0; //So an attack can be performeed after a jump again.
                     enemy.jumped = true; //So that the AI doesn't jump a billion times.
                 } 
@@ -95,7 +95,10 @@ function ai({ player, enemy, boundryEnemy, counter }) {
             }
             break;
         }
-    
+
+        /**
+         * Copy pasted from the 1vs1, resued code could be stored in a function instead  
+         */    
         if (player.position.x + player.width + extraMeasure < enemy.position.x && enemy.position.x > boundryEnemy) {
             enemy.velocity.x = -5;
             enemy.switchSprites('sprint');
@@ -112,12 +115,11 @@ function ai({ player, enemy, boundryEnemy, counter }) {
             enemy.switchSprites('fall');
         }
 
-        if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) { //5
+        if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) {
             enemy.isAttacking = false;
             audio.hit1.play();
             player.takeHit();
             audio.hit1.stop();
-            //document.querySelector('#playerHealth').style.width = player.health + '%';
             gsap.to('#playerHealth', {
                 width: player.health + '%'
             });

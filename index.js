@@ -142,6 +142,7 @@ function animate() {
         enemy.takeHit();
         audio.hit3.stop();
         player.isAttacking = false;
+        enemy.takenHit = true;
         //document.querySelector('#enemyHealth').style.width = enemy.health + '%';
         gsap.to('#enemyHealth', {
             width: enemy.health + '%'
@@ -156,9 +157,9 @@ function animate() {
     //Enemy movement
     enemy.velocity.x = 0;
     let boundryEnemy = flipped ? 15 : 40 + player.width;
-    counter === 200 ? counter = 0 : counter++; //takes the AI 2sec to decide on what to do next
-    ai({player, enemy, boundryEnemy, counter});
-/*    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x > boundryEnemy) {
+    //counter === 200 ? counter = 0 : counter++; //takes the AI 2sec to decide on what to do next
+    //ai({player, enemy, boundryEnemy, counter});
+    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x > boundryEnemy) {
         enemy.velocity.x = -5;
         enemy.switchSprites('sprint');
     } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x < 937) {
@@ -190,7 +191,7 @@ function animate() {
     //player misses attack
     if (enemy.isAttacking && enemy.currentFrame === 2) { //5
         enemy.isAttacking = false;
-    }*/ 
+    }
 
 
     //end game based on health
@@ -218,8 +219,9 @@ window.addEventListener('keydown', (e) => {
             case 'w':
                 if (player.velocity.y === 0) player.velocity.y = -20;
             break;
-            case ' ':
+            case ' ': 
                 player.attack();
+                console.log('hur många gånger');
             break;
         }
     }

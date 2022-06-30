@@ -15,15 +15,16 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 
 - ~~Can't run outside of the map or at the edge of the map~~
 - ~~Double jumps or multiple jumps outside of the map~~
-- Swiping multiple times by holding in `space`/`ArrowDown` (I have an idea of how to fix it) ❌
+- Swiping multiple times by holding in `space`/`ArrowDown` ~~(Fixed it so the AI can't abuse it)~~
 - Animation bugs where longer animations can't be canceled before the determine winner is done i.e player with longer animations don't "*die*" ❌
 ---
 ##### TODO:
 - Simple bot AI. ✔️
 - Start buttons to start the battle against bot or local CO-OP
-- Pick between Ninja and Fantasy Man to go against (If I feel like it, sprites are already implemented)
+- Pick between Ninja and Fantasy Man to go against ([If I feel like it, sprites are already implemented](https://cdnmetv.metv.com/z50xp-1619719725-16226-list_items-no.jpg)) ❌
 - Reverse the sprites when they run past each other (Can't since the sprites don't come with that) ❌
 - Win streaks (Wasn't able to make it work as I wanted. trying to count up in a infinity loop isn't a great idea) ❌
+- Clean up the code a bit so there isn't to much resued code (AI and game logic for enemy comes to mind). ❌ 
 ---
 ### Assets and Resources
 [Oak Woods Assets](https://brullov.itch.io/oak-woods)
