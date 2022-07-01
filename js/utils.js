@@ -29,7 +29,7 @@ function determineWinner({ player, enemy, timerId }) {
 }
 
 //Verkar inte funka, vet vart felet ligger men vet inte hur jag skall stoppa räkningen eller få ut värdet en gång från vår infinite animation loop
-//utan att förstöra animations frame...
+//utan att förstöra animations frame... (Testa så som vi gjorde med AI, om jag orkar that is)
 /* function winStreak() {
     //Visa vinns om det finns några
     if (+sessionStorage.player > 0) {
@@ -63,7 +63,14 @@ function decreaseTimer() {
     }
 }
 
+/**
+ * TODO IF I FEEL THE NEED
+ * Have the actions occur between 1-2s now that the infinity jumps and hits are solved
+ * Let the movement occur between 0.5-1s so that the AI just doesn't follow around
+ */
+
 let randomAction;
+//let movementArr = ['forward', 'back']; //0.5s so that the AI has more fluent movement and is not only a duck
 let actionArr = ['jump', 'attack'];
 function ai({ player, enemy, boundryEnemy, counter }) {
     const extraMeasure = 30; //So that the AI doesn't walk inside player so that it can't attack
@@ -98,6 +105,7 @@ function ai({ player, enemy, boundryEnemy, counter }) {
 
         /**
          * Copy pasted from the 1vs1, resued code could be stored in a function instead  
+         * AI follows you around everywhere I wanted it so that it goes for a bit then the randomActions array is called but I'm moving on, proof of concept
          */    
         if (player.position.x + player.width + extraMeasure < enemy.position.x && enemy.position.x > boundryEnemy) {
             enemy.velocity.x = -5;

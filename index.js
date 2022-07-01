@@ -93,7 +93,32 @@ const keys = {
     ArrowLeft: { pressed: false },
 }
 
-decreaseTimer();
+document.querySelector('#timer').innerHTML = 60; //So that the timer doesn't run
+let choice; //either true for CO-OP or false for AI
+let clicked = false;
+document.getElementById('CO-OP').addEventListener('click', () => {
+    choice = 'CO-OP';
+    document.querySelector('#CO-OP').style.display = 'none';
+    document.querySelector('#AI').style.display = 'none';
+    //console.log('Click:',choice);
+    decreaseTimer();
+    if(!clicked) {
+        audio.Battle.play();
+        clicked = true;
+    }
+});
+
+document.getElementById('AI').addEventListener('click', () => {
+    choice = 'AI';
+    document.querySelector('#CO-OP').style.display = 'none';
+    document.querySelector('#AI').style.display = 'none';
+    //console.log('Click:',choice);
+    decreaseTimer();
+    if(!clicked) {
+        audio.Battle.play();
+        clicked = true;
+    }
+});
 
 let counter = 0;
 function animate() {
@@ -157,45 +182,47 @@ function animate() {
     //Enemy movement
     enemy.velocity.x = 0;
     let boundryEnemy = flipped ? 15 : 40 + player.width;
-    //counter === 200 ? counter = 0 : counter++; //takes the AI 2sec to decide on what to do next
-    //ai({player, enemy, boundryEnemy, counter});
-    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x > boundryEnemy) {
-        enemy.velocity.x = -5;
-        enemy.switchSprites('sprint');
-    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x < 937) {
-        enemy.velocity.x = 5;
-        enemy.switchSprites('sprint');
-    } else if (
-        keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x > 936 || 
-        keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x < 40 + player.width) {
-        enemy.switchSprites('sprint');
-    } else {
-        enemy.switchSprites('idle');
-    }
-    if (enemy.velocity.y < 0) {
-        enemy.switchSprites('jump');
-    } else if (enemy.velocity.y > 0) {
-        enemy.switchSprites('fall');
-    }
 
-    if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) { //5
-        enemy.isAttacking = false;
-        audio.hit1.play();
-        player.takeHit();
-        audio.hit1.stop();
-        //document.querySelector('#playerHealth').style.width = player.health + '%';
-        gsap.to('#playerHealth', {
-            width: player.health + '%'
-        });
+    if (choice === 'AI') {
+        counter === 200 ? counter = 0 : counter++; //takes the AI 2sec to decide on what to do next
+        ai({player, enemy, boundryEnemy, counter});
+    } else if (choice === 'CO-OP') {
+        if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x > boundryEnemy) {
+            enemy.velocity.x = -5;
+            enemy.switchSprites('sprint');
+        } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x < 937) {
+            enemy.velocity.x = 5;
+            enemy.switchSprites('sprint');
+        } else if (
+            keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight' && enemy.position.x > 936 || 
+            keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft' && enemy.position.x < 40 + player.width) {
+            enemy.switchSprites('sprint');
+        } else {
+            enemy.switchSprites('idle');
+        }
+        if (enemy.velocity.y < 0) {
+            enemy.switchSprites('jump');
+        } else if (enemy.velocity.y > 0) {
+            enemy.switchSprites('fall');
+        }
+    
+        if (this.rectangularCollision({ playerRectangle: player, enemyRectangle: enemy }) && enemy.isAttacking && enemy.currentFrame === 2) { //5
+            enemy.isAttacking = false;
+            audio.hit1.play();
+            player.takeHit();
+            audio.hit1.stop();
+            //document.querySelector('#playerHealth').style.width = player.health + '%';
+            gsap.to('#playerHealth', {
+                width: player.health + '%'
+            });
+        }
+        //player misses attack
+        if (enemy.isAttacking && enemy.currentFrame === 2) {
+            enemy.isAttacking = false;
+        }
     }
-    //player misses attack
-    if (enemy.isAttacking && enemy.currentFrame === 2) { //5
-        enemy.isAttacking = false;
-    }
-
-
-    //end game based on health
-    if (enemy.health <= 0 || player.health <= 0) {
+     //end game based on health
+     if (enemy.health <= 0 || player.health <= 0) {
         determineWinner({ player, enemy, timerId });
         audio.Battle.stop();
     }
@@ -206,7 +233,7 @@ animate();
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && (player.isDead || enemy.isDead) || timer === 0) location.reload();
 
-    if (e.repeat) return;
+    if (e.repeat) return; //Praise StackOverflow
 
     if (!player.isDead) {
         switch (e.key) {
@@ -264,13 +291,5 @@ window.addEventListener('keyup', (e) => {
         case 'ArrowLeft':
             keys.ArrowLeft.pressed = false;
         break;
-    }
-});
-
-let clicked = false;
-window.addEventListener('click', () => {
-    if(!clicked) {
-        audio.Battle.play();
-        clicked = true;
     }
 });

@@ -1,10 +1,16 @@
 <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Fighting Game 2D</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon"
+        href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/google/313/crossed-swords_2694-fe0f.png"
+        type="image/x-icon">
     <!-- Ha alltid med denna style för att padding inte skall fucka grejer -->
     <style>
         * {
@@ -13,7 +19,12 @@
         }
     </style>
 </head>
-<body>
+<body
+    style="
+        display: flex;
+        justify-content: center;
+    "    
+>
     <!-- red container div -->
     <div style="position: relative; display: inline-block;">
         <!-- smaller red container div -->
@@ -79,14 +90,14 @@
                 <div id="enemyHealth" style="position: absolute; background: #818CF8; top: 0; right: 0; bottom: 0; left: 0;"></div>
             </div>
             <div
-            id="enemyWins"
-            style="                    
-            position: absolute;
-            bottom: 6px;
-            left: 890px;
-            color: white;
-            display: none;
-            "
+                id="enemyWins"
+                style="                    
+                    position: absolute;
+                    bottom: 6px;
+                    left: 890px;
+                    color: white;
+                    display: none;
+                "
             ></div>
             <!---->
         </div>
@@ -104,6 +115,39 @@
         >
         </div>
         <!--Lägg till två buttons så att man antingen kör mot AI eller 1vs1-->
+        <button
+            id="CO-OP"
+            style="
+                text-align: center;
+                cursor: pointer;
+                border: 2px solid white;
+                border-radius: 4px;
+                position: absolute;
+                padding: 12px 18px;
+                color: white;
+                background: #818CF8;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                top: 35%;
+                left: 33.5%;
+            "
+        >1 VS 1</button>
+
+        <button
+            id="AI"
+            style="
+                text-align: center;
+                cursor: pointer;
+                border: 2px solid white;
+                border-radius: 4px;
+                position: absolute;
+                padding: 12px 18px;
+                color: white;
+                background: #818CF8;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                top: 35%;
+                left: 55%;
+            "
+        >VS AI</button>
         <canvas></canvas>
     </div>
 
