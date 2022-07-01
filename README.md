@@ -1,6 +1,8 @@
 # 2D Fighting Game ⚔
 
 A simple 2D fighting made in JS/HTML and some CSS with object oriented programming in mind. Spirte animations, local CO-OP, simple fighting game logic and an AI (not the neural network kind) to boot were done in this project. 
+
+[Link to the game](https://62befe16ccc7c072038d3579--stupendous-cajeta-3cd751.netlify.app/)
 ---
 **Controls:**
 |   P 1   |  MOVE  | P 2 |
