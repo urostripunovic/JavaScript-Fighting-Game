@@ -50,14 +50,4 @@ A simple 2D fighting made in JS/HTML and some CSS with object oriented programmi
 
 [Audio Library `Howl`](https://howlerjs.com/)
 
-[Chris Courses](https://www.youtube.com/c/ChrisCourses)
-
-[EasyGameDev](https://www.youtube.com/watch?v=6Rmj-4r2lrg&list=PLGvgepw5e1ayt7KaozE7DfQaEQwJD8oBI)
-
-[PothOnProgramming](https://www.youtube.com/watch?v=zbqwFb8DJgQ)
-
-[Multiple Swipes](https://stackoverflow.com/questions/61532192/how-can-i-get-keydown-events-only-once-each-time-the-key-is-pressed-even-if-it)
-
-Couldn't find the sources for the other sound effects and music.
-
 ---
